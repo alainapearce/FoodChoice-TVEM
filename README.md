@@ -26,9 +26,10 @@ These scripts are not guaranteed to work for new data or under new directory con
 To use Time-Varying Effect Modeling as done in Pearce et al., (under review), you will also need SAS 9.4 to run the TVEM models. The TVEM macro can be downlaoded from: https://www.methodology.psu.edu/ra/tvem/
 
 Directory Structure:
+
 -MouseTracking_FoodChoice_task: contains all scripts and images for the Food Choice Mouse Tracking task from Sullivan et al., (2015). The task is the same as that paper but the images have been changed.
 
--Processing Scripts: contains matlab and r scripts used to process raw output from the Mouse Tracking Food Choice Task
+-Processing_Scripts: contains matlab and r scripts used to process raw output from the Mouse Tracking Food Choice Task
 NOTE: check file paths/directory structure after downloading or scripts will may not work - there is one raw data file in Data directory for testing.
 
 Processing Steps:
