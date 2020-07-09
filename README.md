@@ -1,7 +1,7 @@
 # FoodChoice-TVEM
 Data and analysis code for the paper: Individual Differences in the Influence of Taste and Health Impact Successful Dietary Self-Control: A Mouse Tracking Food Choice Study in Children. Physiology and Behavior 2020 (under review)
 
-The scripts included in the Open Science Framework project were written by Alaina Pearce in 2019 for the purpose of processing the data from a study using Sullivan et al., (2015) mouse tracking food choice task in children. The processing of mouse trajectories was adapted from 'updatedCode.m' publicly provided by Nikki Sullivan on OSF (https://osf.io/2bctm/). 
+The scripts included in the Open Science Framework project were written by Alaina Pearce in 2019 for the purpose of processing the data from a study using Sullivan et al., (2015) mouse tracking food choice task in children. The processing of mouse trajectories was adapted from 'updatedCode.m' publicly provided by Nicolette Sullivan on OSF (https://osf.io/2bctm/). 
 
     Copyright (C) 2019 Alaina L Pearce
 
