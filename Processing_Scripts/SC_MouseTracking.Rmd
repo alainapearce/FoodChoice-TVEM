@@ -1,0 +1,642 @@
+---
+title: "Mouse Tracking Task"
+output:
+  pdf_document: default
+  html_document: default
+    # toc: true
+    # toc_depth: 2
+    # number_sections: true
+header-includes:
+- \usepackage{fullpage}
+- \usepackage{graphicx}
+- \usepackage{subcaption}
+- \usepackage{float}
+- \usepackage{placeins}
+- \usepackage{caption}
+- \usepackage{mathtools}
+# - \usepackage{rotating}
+- \usepackage{multirow}
+- \usepackage{amssymb}
+- \usepackage{amsmath}
+- \usepackage{bigstrut}
+- \usepackage{geometry}
+# - \usepackage{longtable}
+# - \usepackage{lscape}
+- \usepackage{pdflscape}
+---
+
+<!-- R Markdown -->
+
+<!--  This script was written by Alaina Pearce in 2019 for the
+ purpose of processing the DMK SC_mouse tracking food choice
+ task. Specifically, this script contains all analyses for 
+ Pearce et al., 2020 Physiology and Behavior
+ 
+     Copyright (C) 2019 Alaina L Pearce
+ 
+     This program is free software: you can redistribute it and/or modify
+     it under the terms of the GNU General Public License as published by
+     the Free Software Foundation, either version 3 of the License, or
+     (at your option) any later version.
+ 
+     This program is distributed in the hope that it will be useful,
+     but WITHOUT ANY WARRANTY; without even the implied warranty of
+     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+     GNU General Public License for more details.
+ 
+     You should have received a copy of the GNU General Public License
+     along with this program.  If not, see <https://www.gnu.org/licenses/>. -->
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(tidy = TRUE, tidy.opts = list(comment = FALSE), echo = TRUE, fig.width=6, fig.height=4, fig.path='SC_MouseTrack_Figs/fig-', echo=FALSE, warning=FALSE, message=FALSE, comment = NA)
+```
+
+<!-- load startup file and any extra packages -->
+```{r load, echo=FALSE, include=FALSE}
+source('SC_MouseTracking_setup.R')
+library(knitr)
+library(kableExtra)
+```
+
+<!-- The number of hashtags (#) will determine the boldness of heading -->
+# 3.1 Descriptive Statistics
+## 3.1.1 Demographic Characteristics: 
+
+\begin{table}[ht!]
+\begin{tabular}{ll}
+  \hline
+  \multicolumn{2}{c}{Table 1. Participant Characteristics} \bigstrut[t] \\
+  \hline
+  Total \scriptsize{(\textit{Males, \%})} & 70 (34, 48.6\%) \\
+  Age \scriptsize{(\textit{Mean [range], yrs})} & 9.49 [7.05, 12] \\
+  BMI percentile \scriptsize{(\textit{Mean [range]})} & 74.51 [11, 99] \\
+  BMI Z-score \scriptsize{(\textit{Mean [range]})} & 0.92 [-1.25, 2.57] \\
+  Obesity Status\scriptsize{(\textit{N})} &    \\
+    \hspace{10pt} Obese              & 19    \\
+    \hspace{10pt} Overweight         & 16 \\
+    \hspace{10pt} Healthy Weight     & 35  \\
+  Gender\scriptsize{(\textit{N})} &     \\
+    \hspace{10pt} Male               &  34    \\
+    \hspace{10pt} Female             &  36  \\
+  Ethnicity\scriptsize{(\textit{N})}   & \\
+    \hspace{10pt} Hispanic/Latino      &  4 \\
+    \hspace{10pt} Not H/L              &  66 \\
+    \hspace{10pt} NA                   &  0  \\
+  Race\scriptsize{(\textit{N})}  &    \\
+    \hspace{10pt} Black/AA                &  3   \\
+    \hspace{10pt} White                   &  64   \\
+    \hspace{10pt} Other/Mixed             &  3  \\
+    \hspace{10pt} NA                      &  0  \\
+  SES\scriptsize{(\textit{N})}  &    \\
+    \hspace{10pt} $>$\$100,000          &  20  \\
+    \hspace{10pt} \$50,000-\$100,000  &  32   \\
+    \hspace{10pt} $<$\$50,000           &  17  \\
+    \hspace{10pt} NA                    &  1  \\
+  Maternal Education\scriptsize{(\textit{N})} &   \\
+    \hspace{10pt} $>BA$                       &  11 \\
+    \hspace{10pt} $BA$                         &  28 \\
+    \hspace{10pt} $Associates/Technical$       &  8 \\
+    \hspace{10pt} $High School$                &  13 \\
+    \hspace{10pt} $Other/NA$                   &  10 \\
+  \hline
+\end{tabular}
+\end{table}
+
+
+
+<!-- I like to include all the code for the individual participant characteristic tests just so it is easy to go back to if needed. I just hide output, etc for the document. -->
+
+<!-- Age -->
+```{r Age_ttest_age, echo=FALSE, include=FALSE}
+age_mean
+age_sd 
+age_range
+```
+
+<!-- BMI percentile -->
+```{r BMIp_ttest_age, echo=FALSE, include=FALSE}
+BMIp_mean 
+BMIp_sd 
+BMIp_range 
+```
+
+<!-- Maternal Ed -->
+```{r mED_ttest_age, echo=FALSE, include=FALSE}
+mED_tab
+```
+
+<!-- Sex -->
+```{r gender_chi_age, echo=FALSE, include=FALSE}
+sex_tab 
+```
+
+<!-- Race -->
+```{r race_chi_age, echo=FALSE, include=FALSE}
+race_tab
+```
+
+<!-- Ethnicity -->
+```{r ethnicity_chi_age, echo=FALSE, include=FALSE}
+ethnicity_tab
+```
+
+<!-- SES -->
+```{r SES_chi_age, echo=FALSE, include=FALSE}
+SES_tab
+```
+
+\FloatBarrier
+BMI percentile was not related to child age and did not differ by sex (p’s > 0.459). 
+```{r BMIp_sex_age, echo=FALSE, include=TRUE}
+Age.BMIp_cor
+sex.BMIp_ttest
+```
+
+\newpage
+## 3.1.2 Hunger
+Prior to the Food Choice task, the majority of children (N=54, 77%) were ‘Moderately’ or ‘Extremely’ hungry with only 2 children stating they were not hungry. 
+
+\FloatBarrier
+```{r hunger_tab, echo=FALSE, include=TRUE}
+hunger_tab
+```
+
+\FloatBarrier
+Hunger was negatively associated with BMI percentile ($\beta$(se) = -0.01 (0.004), p = 0.006) and girls reported greater hunger than boys (t(59) = -2.50, p = 0.015). Age was not associated with hunger ($\beta$(se) = 0.01 (0.07), p = 0.839). 
+
+\FloatBarrier
+```{r hunger_BMIp_sex_age, echo=FALSE, include=TRUE}
+hunger_cBMIp_cor
+hunger_sex_ttest
+hunger_Age_cor
+```
+
+\newpage
+## 3.1.2 Food Ratings
+The mean rating for all foods was above ‘Neutral’ for Taste and Liking while the mean rating for 76 % (N = 58) of foods was above ‘Neutral’ for Health (supplemental Figure S2). 
+
+\FloatBarrier
+```{r FoodRatings_HEALTH_byfood_barplot, echo=FALSE, include =TRUE, fig.width = 11, fig.height = 8.5, out.extra='angle=90'}
+bar_graph.se_food(foodRating_health_mean, foodRating_health_se, "Food Item", "Health Rating", 1.5, -0.5, 0)
+```
+
+
+\FloatBarrier
+```{r FoodRatings_TASTE_byfood_barplot, echo=FALSE, include =TRUE, fig.width = 11, fig.height = 8.5, out.extra='angle=90'}
+bar_graph.se_food(foodRating_taste_mean, foodRating_taste_se, "Food Item", "Taste Rating", 1.5, -0.5, 0)
+```
+
+
+\FloatBarrier
+```{r FoodRatings_LIKING_byfood_barplot, echo=FALSE, include =TRUE, fig.width = 11, fig.height = 8.5, out.extra='angle=90'}
+bar_graph.se_food(foodRating_liking_mean, foodRating_liking_se, "Food Item", "Liking Rating", 1.5, -0.5, 0)
+```
+
+
+\FloatBarrier
+Across individual foods, Health ratings were negatively associated with Taste ($\beta$(se) = -0.05 (0.02), p = 0.002) and Liking ($\beta$(se) = -0.05 (0.02), p = 0.002) while Taste and Liking were positive associated with each other ($\beta$(se) = 0.79 (0.01), p < 0.001). 
+
+\FloatBarrier
+```{r FoodRatings_Like.Health_sum, echo=FALSE, results='asis'}
+kable(foodRating_likehealth_sum$coefficients, "latex",  digits = 3, caption = "Food Ratings: Like ~ Health") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+```
+
+\FloatBarrier
+```{r FoodRatings_Like.Taste_sum, echo=FALSE, results='asis'}
+kable(foodRating_liketaste_sum$coefficients, "latex",  digits = 3, caption = "Food Ratings: Like ~ Taste") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+```
+
+\FloatBarrier
+```{r FoodRatings_Taste.Health_sum, echo=FALSE, results='asis'}
+kable(foodRating_tastehealth_sum$coefficients, "latex",  digits = 3, caption = "Food Ratings: Taste ~ Health") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+```
+
+\FloatBarrier
+When looking at children’s average ratings, those who rated foods as Healthier also tended to rate foods as higher in Taste and Liking (Table 2). There were no associations between children’s average food ratings and Age or BMI percentile (p’s > 0.446; Table 2) and there were no differences by sex (p’s > 0.167).
+
+\begin{table}[ht!]
+\begin{tabular}{llll}
+  \hline
+  \multicolumn{4}{c}{Table 2. Correlations Between Children’s Average Attribute Ratings and Individual Characteristics} \bigstrut[t] \\
+  \hline
+  1 Health &  & & \\
+  2 Taste & 0.83*** & & \\
+  3 Liking & 0.61*** & 0.44*** & \\
+  4 BMI percentile & -0.02 & -0.12 & -0.17 \\
+  5 Age & -0.14 & -0.11 & 0.07 \\
+  \hline
+\end{tabular}
+\end{table}
+
+\FloatBarrier
+```{r FoodRatings_AvgRating_cormat_tab, echo=FALSE, results='asis'}
+kable(foodRating_avg_cormat, "latex",  digits = 3, caption = "Average Food Ratings Correlations") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+```
+
+\FloatBarrier
+```{r FoodRatings_AvgRating_cormat_tab_ps, echo=FALSE, results='asis'}
+kable(foodRating_avg_cormat_ps, "latex",  digits = 3, caption = "Average Food Ratings Correlation P-values") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+```
+
+\newpage
+
+Since the foods were a mix of higher ($\geq$ 1.5 kcal/g) and lower (<1.5 kcal/g) ED, the impact of ED on children’s ratings was tested with an ED x Attribute (Health, Taste, Liking) analysis of variance (ANOVA). There were main effects of both Attribute (F(2,325) = 135.00, p < 0.001) and ED F(2,325) = 4.34, p = 0.038), but no ED by Attribute interaction (p = 0.12). The main effect of ED showed greater ratings for higher (M=0.55) than lower ED foods (M = 0.61, t(325) = 2.08, p = 0.038), regardless of attribute, while the main effect of Attribute showed lower ratings for Health (M=0.27) compared to Taste (M = 0.79, t(325)=-12.12, p < 0.001) and Liking (M = 0.67, t(325)=-15.67, p < 0.001) and lower ratings for Liking compared to Taste (t(325)=-3.54, p = 0.001). 
+
+```{r FoodRatings_ED.Rating_ANOVA, echo=FALSE, results='asis'}
+kable(foodRating_rating.ED_tab, "latex",  digits = 3, caption = "ED x Attribute ANOVA") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+```
+
+```{r FoodRatings_ED.Rating_emmeans, echo=FALSE, results='asis'}
+kable(foodRating_rating_MErating_emmeans$contrasts, "latex",  digits = 3, caption = "ED x Attribute Estimated Marginal Means for Attributes") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+
+kable(foodRating_rating_MEED_emmeans$contrasts, "latex",  digits = 3, caption = "ED x Attribute Estimated Marginal Means for ED") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+```
+
+There were no interactions between ED and Age, BMI percentile, or sex for ratings on any of the Attributes (p’s > 0.064).
+```{r FoodRatings_ED.BMIp_ANOVAs, echo=FALSE, results='asis'}
+kable(foodRating_health_BMIp.ED_tab, "latex",  digits = 3, caption = "ED x BMI percentile for Health") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+
+kable(foodRating_taste_BMIp.ED_tab, "latex",  digits = 3, caption = "ED x BMI percentile for Taste") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+
+kable(foodRating_liking_BMIp.ED_tab, "latex",  digits = 3, caption = "ED x BMI percentile for Liking") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+```
+
+```{r FoodRatings_ED.Age_ANOVAs, echo=FALSE, results='asis'}
+kable(foodRating_health_Age.ED_tab, "latex",  digits = 3, caption = "ED x Age for Health") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+
+kable(foodRating_taste_Age.ED_tab, "latex",  digits = 3, caption = "ED x Age for Taste") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+
+kable(foodRating_liking_Age.ED_tab, "latex",  digits = 3, caption = "ED x Age for Liking") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+```
+
+```{r FoodRatings_ED.Sex_ANOVAs, echo=FALSE, results='asis'}
+kable(foodRating_health_Sex.ED_tab, "latex",  digits = 3, caption = "ED x Sex for Health") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+
+kable(foodRating_taste_Sex.ED_tab, "latex",  digits = 3, caption = "ED x Sex for Taste") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+
+kable(foodRating_liking_Sex.ED_tab, "latex",  digits = 3, caption = "ED x Sex for Liking") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+```
+
+\newpage
+## 3.1.3. Food Choices
+Reaction time (M = 1552 ms, SD = 0.28 ms) was not related to BMI percentile or Sex (p’s > 0.248). However, age was negatively associated with reaction time (r = -0.36, p = 0.003). 
+
+\FloatBarrier
+```{r meanRT_mouse_BMIp, echo=FALSE, results='asis'}
+kable(meanRT_cormat, "latex",  digits = 3, caption = "Mean RT Correlations") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+
+kable(meanRT_cormat_ps, "latex",  digits = 3, caption = "Mean RT Correlation P-Values") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+```
+
+```{r meanRT_mouse_sex, echo=FALSE, include =TRUE}
+meanRT_mouse_sex_ttest
+```
+\FloatBarrier
+
+Food choices during self-control trials (i.e., healthier/less tasty food paired with less healthy/tastier food) were examined via the SCSR, which was not related to Hunger, BMI percentile, Age, sex or reaction time (p’s > 0.101).  
+
+\FloatBarrier
+```{r SCSR_mouse_BMIp, echo=FALSE, results='asis'}
+kable(SCSR_cormat, "latex",  digits = 3, caption = "Self-Control Success Ratio Correlations") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+
+kable(SCSR_cormat_ps, "latex",  digits = 3, caption = "Self-Control Success Ratio Correlation P-Values") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+```
+
+```{r SCSR_mouse_sex, echo=FALSE, include =TRUE}
+SCSR_sex_ttest
+```
+
+\newpage 
+# 3.3 Temporal Dynamics During Food Choice
+There were no group STPs for Taste or Liking. Less than half the children had individual STPs for each attribute (Health: 36%; Taste: 44%; and Liking: 40%; see Table 3). 
+\FloatBarrier
+
+\begin{table}[ht!]
+\begin{tabular}{llll}
+  \hline
+  \multicolumn{4}{c}{Table 3. Significant Time Points by Attribute} \bigstrut[t] \\
+  \hline
+  All Trials & & & \\
+  \hspace{10pt} Health & 25 & 66.8 (13.1) & 45-82 \\
+  \hspace{10pt} Taste & 31 & 66.5 (17.3) & 5-90 \\
+  \hspace{10pt} Liking & 28 & 67.4 (17.1) & 6-86 \\
+  Successful Self-Control Trials & & & \\
+  \hspace{10pt} Health & 53 & 70.8 (10.6) & 32-85 \\
+  \hspace{10pt} Taste & 46 & 71.2 (12.1) & 40-90 \\
+  \hspace{10pt} Liking & 49 & 55.7 (17.7) & 2-77 \\
+  Unsuccessful Self-Control Trials & & & \\
+  \hspace{10pt} Health & 48 & 70.0 (13.0) & 35-90 \\
+  \hspace{10pt} Taste & 50 & 71.7 (11.1) & 44-90 \\
+  \hspace{10pt} Liking & 51 & 59.1 (13.3) & 2-79 \\
+  \hline
+\end{tabular}
+\end{table}
+
+\FloatBarrier
+There were no differences in SCSR, Age, BMI percentile, or sex between children with versus without an STP (p’s > 0.109). 
+
+\FloatBarrier
+```{r AllTrialsIND_SCSR_STPpresent.Attribute_ANOVA, echo=FALSE, results='asis'}
+kable(IndSigTime_STP.Rating_SCSR_tab, "latex",  digits = 3, caption = "ANOVA: All Trials Sullivan STP present x Rating for Self-Control Success Ratio") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+```
+
+\FloatBarrier
+```{r AllTrialsIND_Age_STPpresent.Attribute_ANOVA, echo=FALSE, results='asis'}
+kable(IndSigTime_STP.Rating_Age_tab, "latex",  digits = 3, caption = "ANOVA: All Trials Sullivan STP present x Rating for Age") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+```
+
+\FloatBarrier
+```{r AllTrialsIND_Sex_STPpresent.Attribute_table, echo=FALSE, results='asis'}
+kable(IndSigTime_STP.Rating_sex_tab_nice, "latex",  digits = 3, caption = "Table: All Trials Sullivan STP present x Rating by Sex") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+```
+
+```{r AllTrialsIND_Sex_STPpresent.Attribute_MHchi}
+IndSigTime_STP.Rating_sex_MHT
+```
+
+\FloatBarrier
+```{r AllTrialsIND_Sex_STPpresent.Attribute_ANOVA, echo=FALSE, results='asis'}
+kable(IndSigTime_STP.Rating_Age_tab, "latex",  digits = 3, caption = "ANOVA: All Trials Sullivan STP present x Rating for Age") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+``` 
+
+\FloatBarrier
+However, there was a significant Attribute (Health, Taste, Liking) x STP Present (Yes, No) interaction for Hunger (F(2, 189) = 4.06, p = 0.019) such that children with an STP for Taste reported greater hunger than those who did not (p = 0.011). There were no differences in Hunger for those with or without STPs for Health (p = 0.152) or Liking (p = 0.931). 
+
+```{r AllTrialsIND_Hunger_STPpresent.Attribute_ANOVA, echo=FALSE, results='asis'}
+kable(IndSigTime_STP.Rating_Hunger_tab, "latex",  digits = 3, caption = "ANOVA: All Trials Sullivan STP present x Rating for Hunger") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+
+kable(IndSigTime_STP.Rating_Hunger_emmeans$contrasts, "latex",  digits = 3, caption = "Marginal Means: All Trials Sullivan STP present x Rating for Hunger") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+
+kable(IndSigTime_STP.Rating_Hunger_tab_no159, "latex",  digits = 3, caption = "ANVOA: All Trials Sullivan STP present x Rating for Hunger - outlier removed") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+
+kable(IndSigTime_STP.Rating_Hunger_emmeans_no159$contrasts, "latex",  digits = 3, caption = "Marginal Means: All Trials Sullivan STP present x Rating for Hunger - outlier removed") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+```
+
+Individual STPs did not differ by attribute (F(2, 46) = 0.32, p = 0.773; Table 3). 
+
+```{r AllTrialsIND_STP.Attribute, echo=FALSE, results='asis'}
+kable(IndSigTime_Rating_nodelete_tab, "latex",  digits = 3, caption = "All Trials Sullivan STP x Attribute ANOVA") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+```
+
+Therefore, Taste, Health, and Liking were all associated with mouse angle trajectory about two-thirds of the way into the decision-making process (Figure 2A, Table 3). 
+
+\FloatBarrier
+```{r AllTrialsIND_STPpresent_Ratings_corplot, echo=FALSE, fig.height = 8.5, fig.width = 11, include =TRUE}
+IndCoef_plot_allratings 
+```
+
+\FloatBarrier
+```{r AllTrialsIND_STPtables, echo=FALSE, results='asis'}
+kable(IndSigTime_Rating_mean, "latex",  digits = 3, caption = "All Trials Sullivan STP means by Attribute") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+
+kable(IndSigTime_Rating_sd, "latex",  digits = 3, caption = "All Trials Sullivan STP standard deviations by Attribute") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+
+kable(IndSigTime_Rating_range, "latex",  digits = 3, caption = "All Trials Sullivan STP range by Attribute") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+
+kable(IndSigTime_Rating_nodelete_tab, "latex",  digits = 3, caption = "All Trials Sullivan STP x Attribute ANOVA - no difference by Attribute seen") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+```
+
+\FloatBarrier
+TVEM showed significant associations between mouse angle trajectories and Health and Taste but not Liking (Figure 2B). 
+\FloatBarrier
+```{r AllTrialsIND_TVEM_Ratings_corplot, echo=FALSE, fig.height = 8.5, fig.width = 11, include =TRUE}
+TVEM_plot_allratings 
+```
+
+\FloatBarrier
+#3.4 Temporal Dynamics During Self-Control
+On average, participants had 67 self-control trials (SD = 31). The number of self-control trials did differ by BMI percentile, age, sex or SCSR (p’s > 0.314). 
+
+```{r nSCTrials_descriptives, echo=FALSE}
+kable(nSCtrials_describe[c(2:5, 11:13)], "latex",  digits = 3, caption = "Descriptive Statistics for Number of Self-Control trials") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+```
+
+```{r nSCTrials_BMIp_cor, echo=FALSE}
+nSCtrials_cBMIp_cor
+```
+
+```{r nSCTrials_sex_ttest, echo=FALSE}
+nSCtrials_sex_ttest
+```
+
+```{r nSCTrials_Age_cor, echo=FALSE}
+nSCtrials_Age_cor
+```
+
+```{r nSCTrials_SCSR_cor, echo=FALSE}
+nSCtrials_SCSR_cor
+```
+
+Approximately two-thirds of children had individual STPs (Successful-Health: 76%, Taste: 66%, Liking: 70%; Unsuccessful-Health: 69%, Taste: 71%, Liking: 73%; Table 3). 
+
+\FloatBarrier
+```{r SCTrialsIND_STPpresent_TrialType.Attribute_tab, echo=FALSE, results='asis'}
+kable(GroupCount_lastsig10_SCchoice.rating_tab, "latex",  digits = 3, caption = "STP present by Attribute and Trial Type") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+```
+
+```{r SCTrialsIND_STPpresent_TrialType.Attribute_chi, echo=FALSE}
+GroupCount_lastsig10_SCchoice.rating_chi
+```
+
+\FloatBarrier
+There was a significant main effect of Attribute (F(2, 240) = 47.2, p < 0.001) such that children had earlier individual STPs for Liking than Health (p < 0.001) and Taste (p < 0.001), but showed no difference between Health and Taste (p = 0.840; Table 3). Individual STPs did not differ by Self-Control (p = 0.646) and there was no interaction between Self-Control and Attribute (p = 0.412). 
+
+```{r SCTrialsIND_STP_TrialType.Attribute_ANOVA, echo=FALSE, results='asis'}
+kable(IndSigTime_Rating.SCchoice_nodelete_tab, "latex",  digits = 3, caption = "SC trials ANOVA: Attribute x Trial Type for STPs") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+
+kable(IndSigTime_Rating.SCchoice_nodelete_emmeans$contrasts, "latex",  digits = 3, caption = "SC trials Post-hoc tests: Attribute x Trial Type for STPs") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+
+kable(IndSigTime_Rating_nodelete_dset_nSCgood_means, "latex",  digits = 3, caption = "Average number of Successful trials by Attribute for STPs") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+
+kable(IndSigTime_Rating_nodelete_dset_nSCfail_means, "latex",  digits = 3, caption = "Average number of Unsuccessful trials by Attribute for STPs") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+```
+
+None of the individual characteristics (i.e., SCSR, Age, BMI percentile, sex, or hunger) differed by presence of STP (p’s > 0.163). 
+
+\FloatBarrier
+```{r SCTrialsIND_SCSR_STPpresent.Attribute_ANOVA, echo=FALSE, results='asis'}
+kable(IndSigTime_STP.Rating_SCSR_SCgood_tab, "latex",  digits = 3, caption = "ANOVA: SC Good Sullivan STP present x Rating for SCSR") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+
+kable(IndSigTime_STP.Rating_SCSR_SCfail_tab, "latex",  digits = 3, caption = "ANOVA: SC Fail Sullivan STP present x Rating for SCSR") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+```
+
+\FloatBarrier
+```{r SCTrialsIND_Age_STPpresent.Attribute_ANOVA, echo=FALSE, results='asis'}
+kable(IndSigTime_STP.Rating_Age_SCgood_tab, "latex",  digits = 3, caption = "ANOVA: SC Good Sullivan STP present x Rating for Age") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+
+kable(IndSigTime_STP.Rating_Age_SCfail_tab, "latex",  digits = 3, caption = "ANOVA: SC Fail Sullivan STP present x Rating for Age") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+```
+
+\FloatBarrier
+```{r SCTrialsIND_BMIp_STPpresent.Attribute_ANOVA, echo=FALSE, results='asis'}
+kable(IndSigTime_STP.Rating_BMIp_SCgood_tab, "latex",  digits = 3, caption = "ANOVA: SC Good Sullivan STP present x Rating for BMI percentile") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+
+kable(IndSigTime_STP.Rating_BMIp_SCfail_tab, "latex",  digits = 3, caption = "ANOVA: SC Fail Sullivan STP present x Rating for BMI percentile") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+```
+
+\FloatBarrier
+```{r SCTrialsIND_Sex_STPpresent.Attribute_table, echo=FALSE, results='asis'}
+kable(IndSigTimeSCgood_sex.rating_tab_nice, "latex",  digits = 3, caption = "Table: SC Good Trials Sullivan STP present x Rating by Sex") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+
+kable(IndSigTimeSCfail_sex.rating_tab_nice, "latex",  digits = 3, caption = "Table: SC Fail Trials Sullivan STP present x Rating by Sex") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+```
+
+```{r SCTrialsIND_Sex_STPpresent.TrialType_MHchi}
+IndSigTimeSCgood_sex.rating_MHT
+IndSigTimeSCfail_sex.rating_MHT
+```
+
+\FloatBarrier
+```{r SCTrialsIND_Hunger_STPpresent.Attribute_ANOVA, echo=FALSE, results='asis'}
+kable(IndSigTime_STP.Rating_Hunger_SCgood_tab, "latex",  digits = 3, caption = "ANOVA: SC Good Sullivan STP present x Rating for Hunger") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+
+kable(IndSigTime_STP.Rating_Hunger_SCfail_tab, "latex",  digits = 3, caption = "ANOVA: SC Fail Sullivan STP present x Rating for Hunger") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+```
+
+\FloatBarrier
+Together, this indicates that information about Liking was incorporated into the food decision-making process earlier than information about Taste or Health, regardless of self-control performance (Figure 2C). When using TVEM, all three attributes had time windows where there were significant interactions between Attribute and Self-Control (Health: time points 44-100, Taste: time points 36-100, and Liking: time points 1-4 and 35-100; Figure 2D). 
+
+```{r SCTrialsIND_STPpresent_Ratings.TrialType_corplot, echo=FALSE, fig.height = 8.5, fig.width = 11, include =TRUE}
+SCoutcome_TVEM_plot_allratings 
+```
+
+```{r SCTrialsIND_STP_TrialType.Attribute_tabs, echo=FALSE, results='asis'}
+kable(IndSigTime_SCchoice.Rating_nodelete_mean, "latex",  digits = 3, caption = "SC trials Means: Attribute x Trial Type for STPs") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+
+kable(IndSigTime_SCchoice.Rating_nodelete_sd, "latex",  digits = 3, caption = "SC trials Standard Deviations: Attribute x Trial Type for STPs") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+
+kable(IndSigTime_SCchoice.Rating_nodelete_range, "latex",  digits = 3, caption = "SC trials Ranges: Attribute x Trial Type for STPs") %>%
+  kable_styling(latex_options = c("hold_position", "repeat_header"))
+```
+\FloatBarrier
+
+# 3.5 Individual Differences in Temporal Dynamics During Food Choice
+## 3.5.1 Associations with Dietary Self-Control. 
+There were significant interactions between SCSR and Health (Figure 3A), Taste (Figure 3B), and Liking (Figure 3C). 
+\FloatBarrier
+```{r AllTrialsIND_TVEM_health.SCSR_corplot, echo=FALSE, fig.height = 8.5, fig.width = 11, include =TRUE}
+TVEM_plot_health.SCSR
+```
+
+\FloatBarrier
+```{r AllTrialsIND_TVEM_taste.SCSR_corplot, echo=FALSE, fig.height = 8.5, fig.width = 11, include =TRUE}
+TVEM_plot_taste.SCSR
+```
+
+\FloatBarrier
+```{r AllTrialsIND_TVEM_liking.SCSR_corplot, echo=FALSE, fig.height = 8.5, fig.width = 11, include =TRUE}
+TVEM_plot_liking.SCSR 
+```
+
+\FloatBarrier
+## 3.5.3 Associations with BMI percentile
+There was a significant BMI percentile x Liking interaction (Figure 4A)
+\FloatBarrier
+```{r AllTrialsIND_TVEM_liking.BMIp_corplot, echo=FALSE, fig.height = 8.5, fig.width = 11, include =TRUE}
+TVEM_plot_liking.BMIpQ
+```
+
+# 3.6 Individual Differences in Temporal Dynamics During Self-Control
+## 3.5.1 Associations with Self-Control Success Ratio
+For Successful trials, children with worse self-control had a more negative association between Liking and mouse angle starting about half-way through the decision-making process (time points 53-100; Figure 5A). 
+\FloatBarrier
+```{r SCgoodTrialsIND_TVEM_liking.SCSR_corplot, echo=FALSE, fig.height = 8.5, fig.width = 11, include =TRUE}
+SCgood_TVEM_plot_liking.SCSR 
+```
+
+\FloatBarrier
+In contrast, for Unsuccessful trials, children with better self-control had more positive associations between Liking and mouse angle at the end of the decision-making process (time points 83-97; Figure 5B).
+
+\FloatBarrier
+```{r SCfailTrialsIND_TVEM_liking.SCSR_corplot, echo=FALSE, fig.height = 8.5, fig.width = 11, include =TRUE}
+SCfail_TVEM_plot_liking.SCSR 
+```
+
+\FloatBarrier
+Unsuccessful self-control trials, those with better overall self-control showed a less negative association between Health and mouse angle (Figure 7C), but a more positive association between Taste and mouse angle (Figure 7D). 
+\FloatBarrier
+```{r SCfailTrialsIND_TVEM_health.SCSR_corplot, echo=FALSE, fig.height = 8.5, fig.width = 11, include =TRUE}
+SCfail_TVEM_plot_health.SCSR 
+```
+
+\FloatBarrier
+```{r SCfailTrialsIND_TVEM_taste.SCSR_corplot, echo=FALSE, fig.height = 8.5, fig.width = 11, include =TRUE}
+SCfail_TVEM_plot_taste.SCSR 
+```
+
+\FloatBarrier
+## 3.5.2 Associations with Age
+For Unsuccessful self-control trials, there were significant interactions between Age and both Taste (Figure 6A) and Liking (Figure 6B), but not Health. 
+\FloatBarrier
+```{r SCfailTrialsIND_TVEM_liking.Age_corplot, echo=FALSE, fig.height = 8.5, fig.width = 11, include =TRUE}
+SCfail_TVEM_plot_liking.Age 
+```
+
+\FloatBarrier
+```{r SCfailTrialsIND_TVEM_taste.Age_corplot, echo=FALSE, fig.height = 8.5, fig.width = 11, include =TRUE}
+SCfail_TVEM_plot_taste.Age 
+```
+
+\FloatBarrier
+## 3.5.3 Associations with BMI percentile
+There was a significant BMI percentile x Taste interaction for Successful, but not Unsuccessful, self-control trials. Towards the end of the decision-making process (Time Points 66-87, Figure 9B), children with higher BMI percentiles showed a more negative association between Taste and mouse angle (Figure 4B).
+
+\FloatBarrier
+```{r SCgoodTrialsIND_TVEM_taste.BMIp_corplot, echo=FALSE, fig.height = 8.5, fig.width = 11, include =TRUE}
+SCgood_TVEM_plot_taste.BMIpQ 
+```
+\FloatBarrier
+
+\end{document}

@@ -1,0 +1,17 @@
+#!/bin/bash
+#PBS -l nodes=1:ppn=2
+#PBS -l pmem=12gb
+#PBS -l walltime=01:00:00
+#PBS -A klk37_a_g_bc_default
+#
+#Useage: ./SAS_batch $scriptname
+#
+#
+######## SAS script submission ########
+module load sas/9.4
+
+#set top/base directory
+topdir="/gpfs/group/klk37/default/MouseTracking_SC/OSF_PhysBeh_2019/"
+cd $topdir
+
+sas $1
