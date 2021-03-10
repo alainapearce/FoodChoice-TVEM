@@ -30,7 +30,7 @@ Directory Structure:
 -MouseTracking_FoodChoice_task: contains all scripts and images for the Food Choice Mouse Tracking task from Sullivan et al., (2015). The task is the same as that paper but the images have been changed.
 
 -Processing_Scripts: contains matlab and r scripts used to process raw output from the Mouse Tracking Food Choice Task
-NOTE: check file paths/directory structure after downloading or scripts will may not work - there is one raw data file in Data directory for testing.
+NOTE: check file paths/directory structure after downloading or scripts will may not work.
 
 Processing Steps:
 1) Process the raw data using SC_MouseTracking_DMK_pwrapper.m: this script is a wrapper for the other two Matlab scripts. SC_MouseTracking_ProcRawMatfiles.m processes the raw data and produces the datasets needed to do analyses in R. SC_MouseTracking_RawTrajectories.m is optional and is only used if specified in the wrapper function. This script produces .pdfs depicting each trial's trajectory for each participant and takes some time to run. The purpose of this would be if you wanted to inspect individual trajectories or identify change of mind trials.
