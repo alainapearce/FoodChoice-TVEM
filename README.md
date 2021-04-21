@@ -18,14 +18,19 @@ The scripts included in the Open Science Framework project were written by Alain
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+## Primary Publication
+These data have now been published in Appetite:
+A.L. Pearce, S. Adise, N.J. Roberts, C. White, C.F. Geier, K.L. Keller, Individual differences in the influence of taste and health impact successful dietary self-control: A mouse tracking food choice study in children, Physiology & Behavior. 223 (2020) 112990. https://doi.org/10.1016/j.physbeh.2020.112990.
+*While there is an embargo on this paper, a pre-proof version will be available on my personal website: https://sites.psu.edu/alainapearce/research/publications/
 
-This repository only contains the task and processing scripts. To see full data and analysis scripts used in the Pearce et al. (under review) paper, please see the Open Science Framework project page: https://osf.io/sz4dj/
+## Disclaimers
+This repository only contains the task and processing scripts. To see full data and analysis scripts used in the Pearce et al. (2020) paper, please see the Open Science Framework project page: https://osf.io/sz4dj/
 
 These scripts are not guaranteed to work for new data or under new directory configurations, however, they should work if the entire project is downloaded with the data and no changes are made to directories. To use these scripts, you will need MATLAB2017 or later, LaTex, and R/Rstudio. Be sure that all required libraries are installed in R and your LaTex is linked with Rstudio prior to running. 
 
-To use Time-Varying Effect Modeling as done in Pearce et al., (under review), you will also need SAS 9.4 to run the TVEM models. The TVEM macro can be downlaoded from: https://www.methodology.psu.edu/ra/tvem/
+To use Time-Varying Effect Modeling as done in Pearce et al., (2020), you will also need SAS 9.4 to run the TVEM models. The TVEM macro can be downlaoded from: https://www.methodology.psu.edu/ra/tvem/
 
-Directory Structure:
+## Directory Structure:
 
 -MouseTracking_FoodChoice_task: contains all scripts and images for the Food Choice Mouse Tracking task from Sullivan et al., (2015). The task is the same as that paper but the images have been changed.
 
