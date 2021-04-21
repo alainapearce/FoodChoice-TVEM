@@ -21,6 +21,7 @@ The scripts included in the Open Science Framework project were written by Alain
 ## Primary Publication
 These data have now been published in Appetite:
 A.L. Pearce, S. Adise, N.J. Roberts, C. White, C.F. Geier, K.L. Keller, Individual differences in the influence of taste and health impact successful dietary self-control: A mouse tracking food choice study in children, Physiology & Behavior. 223 (2020) 112990. https://doi.org/10.1016/j.physbeh.2020.112990.
+
 *While there is an embargo on this paper, a pre-proof version will be available on my personal website: https://sites.psu.edu/alainapearce/research/publications/
 
 ## Disclaimers
